@@ -14,4 +14,4 @@ fi
 # echo ":/home/container$ ${MODIFIED_STARTUP}"
 
 # Run the Server
-exec ${STARTUP}
+./7DaysToDieServer.x86_64 -configfile=serverconfig.xml -quit -batchmode -nographics -dedicated -logfile logs/latest.log & sleep 10 && telnet -E 127.0.0.1 8081
