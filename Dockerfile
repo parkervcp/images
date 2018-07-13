@@ -1,6 +1,6 @@
 FROM microsoft/dotnet:2.1-runtime-deps-alpine3.7
 
-LABEL maintainer="brycea@protonmail.com"
+LABEL maintainer="brycema@protonmail.com"
 
 ENV DOTNET_VERSION 2.1.1
 ENV NODE_VERSION 8.11.3
