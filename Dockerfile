@@ -1,6 +1,6 @@
-FROM ubuntu:16.04
+FROM        ubuntu:18.04
 
-MAINTAINER Isaac A., <isaac@isaacs.site>
+LABEL       auther="Isaac A." maintainer="isaac@isaacs.site"
 
 RUN apt update \
     && apt upgrade -y \
