@@ -1,6 +1,6 @@
 FROM        ubuntu:18.04
 
-LABEL       auther="Isaac A." maintainer="isaac@isaacs.site"
+LABEL       author="Isaac A." maintainer="isaac@isaacs.site"
 
 RUN apt update \
     && apt upgrade -y \
