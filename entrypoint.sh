@@ -14,4 +14,4 @@ MODIFIED_STARTUP=`echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g'`
 # echo ":/home/container$ ${MODIFIED_STARTUP}"
 
 # Run the Server
-./7DaysToDieServer.x86_64 -configfile=serverconfig.xml -quit -batchmode -nographics -dedicated ${MODIFIED_STARTUP} -logfile logs/latest.log & sleep 10 && telnet -E 127.0.0.1 8081
+./7DaysToDieServer.x86_64 -configfile=serverconfig.xml -quit -batchmode -nographics -dedicated ${MODIFIED_STARTUP} -logfile logs/latest.log & sleep 15 && telnet -E 127.0.0.1 8081
