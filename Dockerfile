@@ -22,6 +22,9 @@ USER        container
 ENV         HOME /home/container
 WORKDIR     /home/container
 
+# Add basic Config files
+COPY        ./config/* /mnt/server/
+
 COPY        ./libnss_wrapper.so /libnss_wrapper.so
 COPY        ./entrypoint.sh /entrypoint.sh
 CMD         ["/bin/bash", "/entrypoint.sh"]
