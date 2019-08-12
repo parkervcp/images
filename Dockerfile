@@ -1,7 +1,7 @@
 
 FROM ubuntu:18.04
 
-MAINTAINER Kitty, <sebastiannicolaelazar@gmail.com>
+MAINTAINER Kitty, <itznya10@gmail.com>
 
 RUN apt update \
     && apt upgrade -y \
@@ -16,6 +16,13 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+    # Ruby & Depndencies
+RUN apt -y install make g++
+RUN apt -y install ruby ruby-dev libopus0
+RUN gem install discordrb
+RUN apt update
+RUN apt -y install ffmpeg
 
     # Golang & Dependencies
 RUN apt -y install golang
