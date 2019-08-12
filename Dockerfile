@@ -17,6 +17,11 @@ ENV LC_ALL en_US.UTF-8
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+    # Composer & PHP7.2
+RUN apt update
+RUN apt install -y php7.2 php7.2-cli php7.2-gd php7.2-pdo php7.2-mbstring php7.2-tokenizer php7.2-bcmath php7.2-xml php7.2-curl php7.2-zip 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
     # Ruby
 RUN apt -y install make g++
 RUN apt -y install ruby ruby-dev libopus0
