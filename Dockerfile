@@ -1,7 +1,7 @@
 
 FROM ubuntu:18.04
 
-MAINTAINER Kitty, <itznya10@gmail.com>
+MAINTAINER Kitty, <sebastiannicolaelazar@gmail.com>
 
 RUN apt update \
     && apt upgrade -y \
