@@ -17,14 +17,14 @@ ENV LC_ALL en_US.UTF-8
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-    # Ruby & Depndencies
+    # Ruby
 RUN apt -y install make g++
 RUN apt -y install ruby ruby-dev libopus0
 RUN gem install discordrb
 RUN apt update
 RUN apt -y install ffmpeg
 
-    # Golang & Dependencies
+    # Golang
 RUN apt -y install golang
 RUN go get github.com/bwmarrin/discordgo
 
@@ -39,7 +39,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && npm install discord.js node-opus opusscript \
     && npm install sqlite3 --build-from-source
 
-    # Python3 & Dependencies
+    # Python3
 RUN apt -y install python3.6 python3-pip python2.7 python-pip libffi-dev mono-complete \
     && pip3 install aiohttp websockets pynacl opuslib \
     && python3 -m pip install -U discord.py[voice]
