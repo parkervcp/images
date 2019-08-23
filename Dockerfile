@@ -42,7 +42,7 @@ RUN apt -y install make g++ && apt -y install ruby ruby-dev libopus0 && gem inst
 RUN apt -y install golang && go get github.com/bwmarrin/discordgo
 
     # Java
-RUN apt -y install openjdk-8-jdk maven gradle
+RUN apt -y install openjdk-8-jdk openjdk-8-jre
 
     # NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
@@ -51,12 +51,17 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt -y install nodejs node-gyp \
     && npm install discord.js node-opus opusscript \
     && npm install sqlite3 --build-from-source
-RUN apt -y install build-essential && apt -y install g++ && npm install discord.io && npm install --no-optional eris && npm install discordie
+RUN apt -y install build-essential && apt -y install g++ && npm install discord.io && npm install --no-optional eris && npm install discordie && npm install -g vuepress
 
     # Python3
-RUN apt -y install python3.6 python3-pip python2.7 python-pip libffi-dev mono-complete \
+RUN apt -y install python3.7 python3-pip python2.7 python-pip libffi-dev mono-complete \
     && pip3 install aiohttp websockets pynacl opuslib \
     && python3 -m pip install -U discord.py[voice]
+
+    # Luvit
+RUN cd /usr/local/bin && curl -L https://github.com/luvit/lit/raw/master/get-lit.sh | sh
+RUN lit install SinisterRectus/discordia && lit install creationix/coro-split && lit install creationix/coro-spawn
+RUN apt -y install libopus-dev libsodium-dev
 
 USER container
 ENV  USER container
