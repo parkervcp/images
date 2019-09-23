@@ -119,9 +119,6 @@ RUN SWIFT_URL=https://swift.org/builds/$SWIFT_BRANCH/$(echo "$SWIFT_PLATFORM" | 
     && chmod -R o+r /usr/lib/swift
 RUN swift --version
 
-    # Curl
-RUN apt-get -y install curl
-
     # Nim  
 RUN curl https://nim-lang.org/choosenim/init.sh -sSf | bash -s -- -y
 ENV PATH=/root/.nimble/bin:$PATH
