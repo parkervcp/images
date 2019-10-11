@@ -124,12 +124,15 @@ RUN curl https://nim-lang.org/choosenim/init.sh -sSf | bash -s -- -y
 ENV PATH=/root/.nimble/bin:$PATH
 RUN nimble install discordnim -y
 
+    # Cleanup
+RUN apt-get clean
+    
 USER container
 ENV  USER container
 ENV  HOME /home/container
 
 WORKDIR /home/container
 
-COPY ./bot.sh /bot.sh
+COPY ./entrypoint.sh.sh /entrypoint.sh
 
-CMD ["/bin/bash", "/bot.sh"]
+CMD ["/bin/bash", "/entrypoint.sh"]
