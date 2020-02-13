@@ -15,7 +15,7 @@ RUN         apt -y update \
 
 USER        container
 ENV         USER=container HOME=/home/container
-ENv         LD_PRELOAD=./preload.so
+ENV         LD_PRELOAD=./preload.so
 WORKDIR     /home/container
 
 COPY        ./entrypoint.sh /entrypoint.sh
