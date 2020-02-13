@@ -2,7 +2,7 @@
 # Environment: ubuntu last
 # Minimum Panel Version: 0.7.X
 # ----------------------------------
-FROM        ubuntu
+FROM        ubuntu:18.04
 
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
@@ -15,6 +15,7 @@ RUN         apt -y update \
 
 USER        container
 ENV         USER=container HOME=/home/container
+ENv         LD_PRELOAD=./preload.so
 WORKDIR     /home/container
 
 COPY        ./entrypoint.sh /entrypoint.sh
