@@ -1,21 +1,10 @@
 [![Logo Image](https://cdn.pterodactyl.io/logos/Banner%20Logo%20Black@2x.png)](https://pterodactyl.io)
 
-# Ubuntu
+# USE
+This branch enables you to use bdlauncher in the pterodactyl panel.
+bdlauncher: https://github.com/BDLDev/bdlauncher/
 
-This is a base Ubuntu image with some simple stuff added.
 
-Mostly created to run Minecraft Bedrock servers but should work with anything that just needs a base ubuntu install.
-
-This repository contains generic [Docker](https://docker.com) images that are used by Pterodactyl Panel to run games. With the release of `v0.7.X` of our panel, we have moved to making the install process be a completely seperate part of the process, making it much easier to maintain a smaller set of Dockerfiles.
-
-To learn more about docker or how images are made please check out this [video](https://www.youtube.com/watch?v=_dfLOzuIg2o) by [TechSquidTV](https://www.youtube.com/channel/UC7vYUkA-s5XVjS7UoyGSFbg). It is quite in depth and covers a lot of stuff.
-
-Our goal here is to maintain images that can run a wide variety of games in individual branches. For example, the [`java` branch](https://github.com/parkervcp/images/tree/java) is a standardized Docker container running on Alpine Linux that should support most all Minecraft based games, as well as java based games. We install all of the required dependencies that we ae aware of, but if you notice one missing, we welcome you to either raise an issue in here, or submit a PR to add it.
-
-The `entrypoint.sh` files **should not do any application installing**, and exist solely to parse startup commands passed to the container, and then run them, with a pause at the beginning to allow the Daemon time to boot and attach to the container.
-
-## Current Images
-Every branch, except master, is a different image. For a current list of images, check the branch list [here](https://github.com/parkervcp/images/branches/active).
 
 ## Contributing
 We welcome any contributions you might have. Please follow our formatting for Dockerfiles, which involves minimizing the number of layers, as well as the size of the container. If possible, please stick to Alpine Linux based images, however we do make use of `ubuntu:18.04` in the [`source` branch](https://github.com/parkervcp/images/tree/source) due to Source Engine limitations, and reducing the conflicts that might arise.
