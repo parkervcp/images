@@ -1,5 +1,5 @@
 # ----------------------------------
-# Environment: ubuntu last
+# Environment: ubuntu
 # Minimum Panel Version: 0.7.X
 # ----------------------------------
 FROM        ubuntu:18.04
@@ -15,7 +15,6 @@ RUN         apt -y update \
 
 USER        container
 ENV         USER=container HOME=/home/container
-ENV         LD_PRELOAD=./preload.so
 WORKDIR     /home/container
 
 COPY        ./entrypoint.sh /entrypoint.sh
