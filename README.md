@@ -1,8 +1,15 @@
 [![Logo Image](https://cdn.pterodactyl.io/logos/Banner%20Logo%20Black@2x.png)](https://pterodactyl.io)
 
 # USE
-This branch enables you to use bdlauncher in the pterodactyl panel.
-bdlauncher: https://github.com/BDLDev/bdlauncher/
+This branch enables you to use bdlauncher in the pterodactyl panel.<br>
+Egg file: https://github.com/Dmitri233/bdlauncher-pterodactyl/releases/tag/egg<br>
+Docker images: https://hub.docker.com/r/dmitri233/bdlauncher-pterodactyl<br>
+bdlauncher: https://github.com/BDLDev/bdlauncher/<br>
+
+这个分支使您可以在翼龙面板中使用bdlauncher.<br>
+Egg 文件: https://github.com/Dmitri233/bdlauncher-pterodactyl/releases/tag/egg<br>
+Docker 镜像: https://hub.docker.com/r/dmitri233/bdlauncher-pterodactyl<br>
+bdlauncher: https://github.com/BDLDev/bdlauncher/<br>
 
 
 
