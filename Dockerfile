@@ -4,7 +4,7 @@
 # ----------------------------------
 FROM        debian:stable-slim
 
-LABEL       author="Michael Parker and Dexslab" maintainer="parker@pterodactyl.io"
+LABEL       author="Dex's Lab" maintainer="dex35803@gmail.com"
 
 ENV         DEBIAN_FRONTEND noninteractive
 
