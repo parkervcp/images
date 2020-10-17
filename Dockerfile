@@ -11,9 +11,8 @@ RUN   apt update \
  &&   apt upgrade -y
 
 ##    install dependencies
-RUN   apt install -y ffmpeg curl
-RUN   curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /bin/sh/youtube-dl
-RUN   chmod a+rx /bin/sh/youtube-dl
+RUN   apt install -y ffmpeg curl python3 python3-pip
+RUN   pip install --upgrade youtube_dl
 
 COPY  ./entrypoint.sh /entrypoint.sh
 CMD   ["/bin/bash", "/entrypoint.sh"]
