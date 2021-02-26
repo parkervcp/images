@@ -1,10 +1,6 @@
-# ----------------------------------
-# Environment: ubuntu
-# Minimum Panel Version: 0.7.X
-# ----------------------------------
 FROM    quay.io/parkervcp/pterodactyl-images:base_debian
 
-LABEL   author="Dex's Lab" maintainer="dex35803@gmail.com"
+LABEL   author="Softwarenoob" maintainer="admin@softwarenoob.com"
 
 ENV     DEBIAN_FRONTEND noninteractive
 
@@ -14,7 +10,6 @@ RUN     apt update -y \
         && dpkg -i packages-microsoft-prod.deb \
         && apt update -y \
         && apt install -y dotnet-sdk-5.0 aspnetcore-runtime-5.0 libgdiplus
-
 
 USER    container
 ENV     USER=container HOME=/home/container
