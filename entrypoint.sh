@@ -8,7 +8,7 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
 
-# Update Valheim and uMod
+## Update Valheim and uMod
 if [[ ${AUTO_UPDATE} == "1" ]] && [[ ${UPDATE_PLUGINS} == "1" ]]; then
         if [[ ! -z ${INSTALL_PLUGINS} ]]; then
         echo -e "STARTUP: Plugins configured, installing Plugins: ${INSTALL_PLUGINS}"
@@ -20,13 +20,14 @@ if [[ ${AUTO_UPDATE} == "1" ]] && [[ ${UPDATE_PLUGINS} == "1" ]]; then
     echo -e "STARTUP: Game server and uMod update is complete!"
 fi
 
-#
+# AutoUpdate All
 if [[ ${AUTO_UPDATE} == "1" ]] && [[ ${UPDATE_PLUGINS} == "0" ]]; then
     echo -e "STARTUP: Updating game and uMod, ignoring plugin updates as update plugins is set to 0..."
     umod update -P game core apps extensions --patch-available --strict
     echo -e "STARTUP: Game server and uMod update is complete!"
 fi
 
+# AutoUpdate Plugins
 if [[ ${AUTO_UPDATE} == "0" ]] && [[ ${UPDATE_PLUGINS} == "1" ]]; then
     if [[ ! -z ${INSTALL_PLUGINS} ]]; then
     echo -e "STARTUP: Found configured Plugins, checking if they are not installed: ${INSTALL_PLUGINS}"
@@ -38,10 +39,12 @@ if [[ ${AUTO_UPDATE} == "0" ]] && [[ ${UPDATE_PLUGINS} == "1" ]]; then
     echo -e "STARTUP: Plugin updates are completed!"
 fi
 
+# AutoUpdate Not Update Notice
 if [[ ${AUTO_UPDATE} == "0" ]] && [[ ${UPDATE_PLUGINS} == "0" ]]; then
     echo "STARTUP: Not performing any updates as auto-update is set to 0 (disabled). Starting Server"
 fi
 
+# Installing Plugins
 if [[ ! -z ${INSTALL_PLUGINS} ]]; then
     echo -e "STARTUP: Found configured Plugins, installing Plugins: ${INSTALL_PLUGINS}"
     umod require ${INSTALL_PLUGINS} 
