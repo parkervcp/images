@@ -2,7 +2,7 @@
 # Environment: debian:buster-slim
 # Minimum Panel Version: 0.7.X
 # ----------------------------------
-FROM ubuntu:18.04
+FROM quay.io/parkervcp/pterodactyl-images:base_debian
 
 LABEL author="CastBlacKing" maintainer="thewagaming@gmail.com"
 
