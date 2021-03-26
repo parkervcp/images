@@ -71,8 +71,8 @@ then
 		if [[ ",${WORKSHOP_BLACKLIST}," == *,$i,* ]];
 		then
 			echo -e "\n${GREEN}STARTUP:${YELLOW} Skipping the download/update of Steam Workshop mod ID: ${CYAN}$i${NC}"
-			echo -e "\tThe mod is either too large to download or is blacklisted by your host."
-			echo -e "\tTo install this mod, you will have to manually upload it via SFTP, and set the Mod to Lowercase startup variable to 1 for one bootup sequence.\n"
+			echo -e "The mod is either too large to download or is blacklisted by your host."
+			echo -e "To install this mod, you will have to manually upload it via SFTP, and set the Mod to Lowercase startup var to 1 for one bootup sequence.\n"
 		else
 			echo -e "\n${GREEN}STARTUP:${NC} Downloading/Updating Steam Workshop mod ID: ${CYAN}$i${NC}...\n"
 			./steamcmd/steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} +workshop_download_item $armaGameID $i validate +quit
