@@ -30,7 +30,7 @@ ModsLowercase () {
 }
 
 # Check for old eggs
-if [[ -z ${SERVER_BINARY} ]] || [[ -n ${MODS} ]];
+if [[ -z ${SERVER_BINARY} ]] || [[ -n ${MODS} ]] || [[ ! -e ${WORKSHOP_BLACKLIST}]];
 then
 	echo -e "\n${RED}STARTUP_ERR: Please contact your administrator/host for support, and give them the following message:${NC}\n"
 	echo -e "\t${CYAN}Your Arma 3 Egg is outdated and no longer supported.${NC}"
@@ -70,8 +70,8 @@ then
 	do
 		if [[ ",${WORKSHOP_BLACKLIST}," == *,$i,* ]];
 		then
-			echo -e "\n${GREEN}STARTUP:${YELLOW} Skipping the download/update of Steam Workshop mod ID: ${CYAN}$i${NC}."
-			echo -e "\t${YELLOW}The mod is either too big to download or is blacklisted.${NC}\n"
+			echo -e "\n${GREEN}STARTUP:${YELLOW} Skipping the download/update of Steam Workshop mod ID: ${CYAN}$i${NC}"
+			echo -e "\tThe mod is either too large to download or is blacklisted by your host.\n"
 		else
 			echo -e "\n${GREEN}STARTUP:${NC} Downloading/Updating Steam Workshop mod ID: ${CYAN}$i${NC}...\n"
 			./steamcmd/steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} +workshop_download_item $armaGameID $i validate +quit
