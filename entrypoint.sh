@@ -30,7 +30,7 @@ ModsLowercase () {
 }
 
 # Check for old eggs
-if [[ -z ${SERVER_BINARY} ]] || [[ -n ${MODS} ]] || [[ ! -e ${WORKSHOP_BLACKLIST}]];
+if [[ -z ${SERVER_BINARY} ]] || [[ -n ${MODS} ]] || [[ -z ${WORKSHOP_BLACKLIST}]];
 then
 	echo -e "\n${RED}STARTUP_ERR: Please contact your administrator/host for support, and give them the following message:${NC}\n"
 	echo -e "\t${CYAN}Your Arma 3 Egg is outdated and no longer supported.${NC}"
