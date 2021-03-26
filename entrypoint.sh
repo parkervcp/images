@@ -68,18 +68,24 @@ if [[ -n ${UPDATE_WORKSHOP} ]];
 then
 	for i in $(echo -e ${UPDATE_WORKSHOP} | sed "s/,/ /g")
 	do
-		echo -e "\n${GREEN}STARTUP:${NC} Downloading/Updating Steam Workshop mod ID: ${CYAN}$i${NC}...\n"
-		./steamcmd/steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} +workshop_download_item $armaGameID $i validate +quit
-		# Move the downloaded mod to the root directory, and replace existing mod if needed
-		mkdir -p ./@$i
-		rm -rf ./@$i/*
-		mv -f ./Steam/steamapps/workshop/content/$armaGameID/$i/* ./@$i
-		rm -d ./Steam/steamapps/workshop/content/$armaGameID/$i
-		# Make the mods contents all lowercase
-		ModsLowercase @$i
-		# Move any .bikey's to the keys directory
-		echo -e "\n${GREEN}STARTUP:${NC} Moving any mod .bikey files to the ~/keys/ folder...\n"
-		find ./@$i -name "*.bikey" -type f -exec cp {} ./keys \;
+		if [[ ",${WORKSHOP_BLACKLIST}," == *,$i,* ]];
+		then
+			echo -e "\n${GREEN}STARTUP:${YELLOW} Skipping the download/update of Steam Workshop mod ID: ${CYAN}$i${NC}."
+			echo -e "\t${YELLOW}The mod is either too big to download or is blacklisted.${NC}\n"
+		else
+			echo -e "\n${GREEN}STARTUP:${NC} Downloading/Updating Steam Workshop mod ID: ${CYAN}$i${NC}...\n"
+			./steamcmd/steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} +workshop_download_item $armaGameID $i validate +quit
+			# Move the downloaded mod to the root directory, and replace existing mod if needed
+			mkdir -p ./@$i
+			rm -rf ./@$i/*
+			mv -f ./Steam/steamapps/workshop/content/$armaGameID/$i/* ./@$i
+			rm -d ./Steam/steamapps/workshop/content/$armaGameID/$i
+			# Make the mods contents all lowercase
+			ModsLowercase @$i
+			# Move any .bikey's to the keys directory
+			echo -e "\n${GREEN}STARTUP:${NC} Moving any mod .bikey files to the ~/keys/ folder...\n"
+			find ./@$i -name "*.bikey" -type f -exec cp {} ./keys \;
+		fi
 	done
 	echo -e "\n${GREEN}STARTUP: Download/Update Steam Workshop mods complete!${NC}\n"
 fi
