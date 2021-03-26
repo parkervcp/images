@@ -148,10 +148,4 @@ if [ $? -ne 0 ];
 then
 	echo -e "\n${RED}PTDL_CONTAINER_ERR: There was an error while attempting to run the start command.${NC}\n"
 	exit 1
-else
-	if [[ ${HC_NUM} > 0 ]];
-	then
-		echo -e "\n${GREEN}SHUTDOWN:${NC} Stopping all headless clients...\n"
-		kill $(jobs -p)
-	fi
 fi
