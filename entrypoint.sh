@@ -39,6 +39,16 @@ then
 	exit 1
 fi
 
+# Check for improper Steam account set
+if [[ ${STEAM_USER} == "your_steam_username" ]] || [[ ${STEAM_USER} == "anonymous" ]];
+then
+	echo -e "\n${RED}STARTUP_ERR: Please contact your administrator/host for support, and give them the following message:${NC}\n"
+	echo -e "\t${CYAN}Your Arma 3 Egg, or your client's server, is not configured with valid Steam credentials.${NC}"
+	echo -e "\t${CYAN}Please visit the following link for more info:${NC}"
+	echo -e "\t${CYAN}https://github.com/parkervcp/eggs/tree/master/steamcmd_servers/arma/arma3#installation-requirements${NC}\n"
+	exit 1
+fi
+
 # Update dedicated server, if specified
 if [[ ${UPDATE_SERVER} == "1" ]];
 then
@@ -124,7 +134,7 @@ then
 	echo -e "\n${GREEN}STARTUP:${NC} Starting ${CYAN}${HC_NUM}${NC} Headless Client(s)."
 	for i in $(seq ${HC_NUM})
 	do
-		./${SERVER_BINARY} -client -connect=127.0.0.1 -port=${SERVER_PORT} -password="${HC_PASSWORD}" -profiles=./serverprofile -bepath=./battleye -mod="${MODIFICATIONS}" ${STARTUP_PARAMS} &
+		./${SERVER_BINARY} -client -connect=127.0.0.1 -port=${SERVER_PORT} -password="${HC_PASSWORD}" -profiles=./serverprofile -bepath=./battleye -mod="${MODIFICATIONS}" ${STARTUP_PARAMS} > /dev/null 2>&1 &
 		echo -e "${GREEN}STARTUP:${CYAN} Headless Client $i${NC} launched."
 	done
 fi
@@ -136,6 +146,12 @@ ${MODIFIED_STARTUP}
 
 if [ $? -ne 0 ];
 then
-    echo -e "\n${RED}PTDL_CONTAINER_ERR: There was an error while attempting to run the start command.${NC}\n"
-    exit 1
+	echo -e "\n${RED}PTDL_CONTAINER_ERR: There was an error while attempting to run the start command.${NC}\n"
+	exit 1
+else
+	if [[ ${HC_NUM} > 0 ]];
+	then
+		echo -e "\n${GREEN}SHUTDOWN:${NC} Stopping all headless clients...\n"
+		kill $(jobs -p)
+	fi
 fi
