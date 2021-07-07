@@ -35,7 +35,7 @@ then
 	echo -e "\n${RED}STARTUP_ERR: Please contact your administrator/host for support, and give them the following message:${NC}\n"
 	echo -e "\t${CYAN}Your Arma 3 Egg is outdated and no longer supported.${NC}"
 	echo -e "\t${CYAN}Please download the latest version at the following link, and install it in your panel:${NC}"
-	echo -e "\t${CYAN}https://github.com/parkervcp/eggs/tree/master/steamcmd_servers/arma${NC}\n"
+	echo -e "\t${CYAN}https://github.com/parkervcp/eggs/tree/master/game_eggs/steamcmd_servers/arma${NC}\n"
 	exit 1
 fi
 
@@ -100,7 +100,7 @@ if [[ -n ${BASIC} ]] && [[ ! -f ./${BASIC} ]];
 then
 	echo -e "\n${YELLOW}STARTUP: Specified Basic Network Configuration file \"${CYAN}${BASIC}${YELLOW}\" is missing!${NC}"
 	echo -e "\t${YELLOW}Downloading default file for use instead...${NC}"
-	curl -sSL https://raw.githubusercontent.com/parkervcp/eggs/master/steamcmd_servers/arma/arma3/egg-arma3-config/basic.cfg -o ./${BASIC}
+	curl -sSL https://raw.githubusercontent.com/parkervcp/eggs/master/game_eggs/steamcmd_servers/arma/arma3/egg-arma3-config/basic.cfg -o ./${BASIC}
 fi
 
 # $NSS_WRAPPER_PASSWD and $NSS_WRAPPER_GROUP have been set by the Dockerfile
